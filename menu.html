@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Menu Dropdown</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        html { 
+            box-sizing: border-box; 
+        }
+        
+        body {
+            line-height: 1;	
+            font-size: 16px;		
+        }	
+        
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        
+        *, 
+        *:before, 
+        *:after { 
+            box-sizing: inherit; 
+        }
+
+        .clearfix:before,
+        .clearfix:after {
+            content: ""; 
+            display: table;
+        }
+        
+        .clearfix:after {
+            clear: both;
+        } 
+
+        /* menu */
+        .nav,
+        .nav ul {
+            list-style: none;
+            padding: 0;
+        }   
+
+        .nav .menu-item {
+            position: relative;
+            
+
+            padding: 10px 15px;
+            border: 1px dashed red;
+        }  
+
+        @media(min-width: 768px) {
+            .nav .menu-item {
+                float: left;
+                margin-left: 15px;
+            } 
+        }
+
+        .nav .menu-item:first-child {
+            margin-left: 0;
+        }
+
+        .menu-item a {
+            text-decoration: none;
+            color: #000;
+        }
+
+        /* caret */
+        .menu-item.sub-menu:before {
+            content: '\f0d7';
+            font-family: fontAwesome;
+            position: absolute;
+            right: 2px;
+            color: #000;
+        }   
+
+        .menu-item.active.sub-menu:before {
+            content: '\f0d8';
+        }        
+
+        /* submenu */ 
+        .nav .menu-item ul {
+            margin-top: 15px;
+            display: none;
+        }
+
+        @media(min-width: 768px) {
+            .nav .menu-item ul {
+                position: absolute;
+                top: 36px;
+                width: 150px;
+                margin-top: 0;
+            } 
+        }
+
+        .nav .menu-item ul li {
+            padding: 10px 15px;
+            border: 1px dashed green;
+        } 
+
+        .nav .menu-item ul li a {
+            display: block;
+        }
+
+        nav .menu-item.active ul {
+            display: block;
+        }        
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <ul class="nav">
+            <li class="menu-item"><a href="javascript:;">Home</a></li>
+            
+            <li class="menu-item sub-menu">
+                <a href="javascript:;">Comidas</a>
+                <ul>
+                    <li><a href="javascript:;">Bife com Fritas</a></li>
+                    <li><a href="javascript:;">Feijoada</a></li>
+                    <li><a href="javascript:;">Frango Ensopado</a></li>
+                    <li><a href="javascript:;">Espaguete</a></li>
+                </ul>
+            </li>
+            
+            <li class="menu-item sub-menu">
+                <a href="javascript:;">Lugares</a>
+                <ul>
+                    <li><a href="javascript:;">Rio de Janeiro</a></li>
+                    <li><a href="javascript:;">São Paulo</a></li>
+                    <li><a href="javascript:;">Belo Horizonte</a></li>
+                    <li><a href="javascript:;">Curitiba</a></li>
+                </ul>                
+            </li>
+            
+            <li class="menu-item sub-menu">
+                <a href="javascript:;">Roupas</a>
+                <ul>
+                    <li><a href="javascript:;">Camisa</a></li>
+                    <li><a href="javascript:;">Calça</a></li>
+                    <li><a href="javascript:;">Boné</a></li>
+                    <li><a href="javascript:;">Bermuda</a></li>
+                </ul>                
+            </li>
+            
+            <li class="menu-item"><a href="javascript:;">Contato</a></li>
+        </ul>
+    </nav>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(function() {
+            if ( $(window).width() < 1200 ) {
+                $('.nav .menu-item').click(function() {
+                    $(this).siblings().removeClass('active');
+                    $(this).toggleClass('active');                
+                }); 
+            }
+            else {
+                $('.nav .menu-item').hover(function() {
+                    $(this).siblings().removeClass('active');
+                    $(this).toggleClass('active');                
+                }); 
+            }                       
+        });
+    </script>
+</body>
+</html>
